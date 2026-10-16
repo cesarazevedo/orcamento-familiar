@@ -18,7 +18,7 @@ Você continua preenchendo a planilha. O site acompanha.
 | Arquivo | Para que serve |
 | --- | --- |
 | `index.html` | A estrutura da página |
-| `style.css` | O visual (com modo escuro automático) |
+| `style.css` | O visual (fundo claro, no estilo do blocoi) |
 | `app.js` | Lê a planilha e desenha os gráficos |
 
 ## Como funciona

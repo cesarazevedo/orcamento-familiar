@@ -3,36 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#1f3a4d">
+<meta name="theme-color" content="#ffffff">
 <title>Orçamento Familiar</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header class="top-header">
+  <div class="brand">
+    <div class="brand-icon" aria-hidden="true">💰</div>
+    <div class="brand-text">Orçamento Familiar<span class="brand-sub">Controle financeiro mensal</span></div>
+  </div>
+  <div class="header-right">
+    <span class="og-pill" id="og-mes">—</span>
+    <span class="og-pill og-pill-status" id="og-status">—</span>
+    <button type="button" class="btn-atualizar" id="og-atualizar">↻ Atualizar</button>
+  </div>
+</header>
+
 <main class="og" id="og">
-  <header class="og-top" id="inicio">
-    <div class="og-eyebrow">
-      <span>Controle financeiro mensal</span>
-      <span class="og-pill" id="og-mes">—</span>
-      <span class="og-pill" id="og-status">—</span>
-    </div>
-    <h1>Orçamento Familiar</h1>
+  <section class="og-hello">
     <p class="og-lead" id="og-lead">Carregando a planilha…</p>
-    <div class="og-update">
-      <button type="button" id="og-atualizar">Atualizar</button>
-      <span id="og-quando"></span>
-    </div>
+    <p class="og-quando" id="og-quando"></p>
     <p class="og-erro" id="og-erro" hidden></p>
-  </header>
+  </section>
 
   <section class="og-kpis" id="resumo" aria-label="Resumo do mês">
-    <div class="og-card"><span class="og-kl">Receitas</span><b class="og-kv" id="k-receitas">—</b><span class="og-ks">Tudo que entrou</span></div>
-    <div class="og-card"><span class="og-kl">Despesas</span><b class="og-kv" id="k-despesas">—</b><span class="og-ks">Contas fixas + gastos variáveis</span></div>
-    <div class="og-card"><span class="og-kl">Saldo do mês</span><b class="og-kv" id="k-saldo">—</b><span class="og-ks">Receitas menos despesas</span></div>
-    <div class="og-card"><span class="og-kl">Taxa de economia</span><b class="og-kv" id="k-taxa">—</b><span class="og-ks">Quanto da renda você guarda</span></div>
+    <div class="og-kpi k-verde"><span class="og-ico" aria-hidden="true">📥</span><div><span class="og-kl">Receitas</span><b class="og-kv" id="k-receitas">—</b><span class="og-ks">Tudo que entrou</span></div></div>
+    <div class="og-kpi k-laranja"><span class="og-ico" aria-hidden="true">🧾</span><div><span class="og-kl">Despesas</span><b class="og-kv" id="k-despesas">—</b><span class="og-ks">Contas fixas + gastos variáveis</span></div></div>
+    <div class="og-kpi k-azul"><span class="og-ico" aria-hidden="true">🏦</span><div><span class="og-kl">Saldo do mês</span><b class="og-kv" id="k-saldo">—</b><span class="og-ks">Receitas menos despesas</span></div></div>
+    <div class="og-kpi k-roxo"><span class="og-ico" aria-hidden="true">🐷</span><div><span class="og-kl">Taxa de economia</span><b class="og-kv" id="k-taxa">—</b><span class="og-ks">Quanto da renda você guarda</span></div></div>
   </section>
 
   <section class="og-card" id="uso">
-    <h2>Como a renda foi usada</h2>
+    <h2>🍰 Como a renda foi usada</h2>
     <p class="og-note">Cada pedaço é uma parte do dinheiro que entrou. A parte cinza é o que sobrou.</p>
     <div class="og-stack" id="og-stack"></div>
     <div class="og-legend" id="og-legend"></div>
@@ -40,25 +43,25 @@
 
   <div class="og-grid">
     <section class="og-card" id="grupos">
-      <h2>Para onde vai o dinheiro</h2>
+      <h2>🧭 Para onde vai o dinheiro</h2>
       <p class="og-note">Gastos agrupados por tipo, como na planilha.</p>
       <div class="og-rows" id="og-grupos"></div>
     </section>
     <section class="og-card" id="top">
-      <h2>Maiores gastos</h2>
+      <h2>🔝 Maiores gastos</h2>
       <p class="og-note">Os itens que mais pesam, do maior para o menor.</p>
       <div class="og-rows" id="og-top"></div>
     </section>
   </div>
 
   <section class="og-card" id="previsto">
-    <h2>Previsto e realizado</h2>
+    <h2>🎯 Previsto e realizado</h2>
     <p class="og-note">Barra fina: o que você planejou. Barra grossa: o que aconteceu.</p>
     <div class="og-rows" id="og-previsto"></div>
   </section>
 
   <section class="og-card" id="itens">
-    <h2>Todos os lançamentos</h2>
+    <h2>📋 Todos os lançamentos</h2>
     <div class="og-tools">
       <input type="search" id="og-q" placeholder="Buscar item ou categoria" aria-label="Buscar item ou categoria">
       <span id="og-tipos" role="group" aria-label="Filtrar por tipo"></span>
