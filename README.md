@@ -1,8 +1,8 @@
 # Orçamento Familiar
 
-Dashboard visual do orçamento da família, alimentado por uma planilha do Google Sheets.
+Dashboard visual do orçamento da família. O site lê a planilha do Google Sheets direto no navegador, sempre que é aberto.
 
-Você continua preenchendo a planilha. O dashboard lê os dados sempre que é aberto.
+Você continua preenchendo a planilha. O site acompanha.
 
 ## O que ele mostra
 
@@ -17,16 +17,20 @@ Você continua preenchendo a planilha. O dashboard lê os dados sempre que é ab
 
 | Arquivo | Para que serve |
 | --- | --- |
-| `dashboard/index.html` | A página do dashboard (visual e cálculos) |
-| `dashboard/leitor-da-planilha.js` | Lê a planilha e organiza os dados em linhas |
-| `dashboard/fonte-de-dados.json` | Diz de qual planilha os dados vêm |
+| `index.html` | A estrutura da página |
+| `style.css` | O visual (com modo escuro automático) |
+| `app.js` | Lê a planilha e desenha os gráficos |
 
-## Onde ele roda
+## Como funciona
 
-O dashboard está publicado como um Artifact no Claude. Este repositório guarda o código como backup e para evoluir o projeto.
+O `app.js` busca a aba "Orçamento Mensal" da planilha (o código dela fica no topo do arquivo, em `SHEET_ID`). A planilha precisa estar compartilhada como "qualquer pessoa com o link pode ver".
+
+O navegador guarda a última cópia dos dados. Se a internet falhar, o site mostra essa cópia.
 
 ## Formato da planilha
 
-A aba "Orçamento Mensal" precisa manter esta estrutura: os totais no topo e os blocos Receitas, Despesa Fixa, Despesa Variável e Reserva / Investimento, cada um com as colunas Categoria, Previsto, Realizado e Diferença. Pode adicionar linhas dentro de cada bloco.
+Mantenha os totais no topo e os blocos Receitas, Despesa Fixa, Despesa Variável e Reserva / Investimento, cada um com as colunas Categoria, Previsto, Realizado e Diferença. Pode adicionar linhas dentro de cada bloco.
 
-Os dados da planilha não ficam neste repositório.
+## Atenção
+
+O repositório é público e o site também. Quem tiver o endereço do site consegue ver os números da planilha.

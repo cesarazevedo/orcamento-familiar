@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1f3a4d">
+<title>Orçamento Familiar</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="og" id="og">
+  <header class="og-top" id="inicio">
+    <div class="og-eyebrow">
+      <span>Controle financeiro mensal</span>
+      <span class="og-pill" id="og-mes">—</span>
+      <span class="og-pill" id="og-status">—</span>
+    </div>
+    <h1>Orçamento Familiar</h1>
+    <p class="og-lead" id="og-lead">Carregando a planilha…</p>
+    <div class="og-update">
+      <button type="button" id="og-atualizar">Atualizar</button>
+      <span id="og-quando"></span>
+    </div>
+    <p class="og-erro" id="og-erro" hidden></p>
+  </header>
+
+  <section class="og-kpis" id="resumo" aria-label="Resumo do mês">
+    <div class="og-card"><span class="og-kl">Receitas</span><b class="og-kv" id="k-receitas">—</b><span class="og-ks">Tudo que entrou</span></div>
+    <div class="og-card"><span class="og-kl">Despesas</span><b class="og-kv" id="k-despesas">—</b><span class="og-ks">Contas fixas + gastos variáveis</span></div>
+    <div class="og-card"><span class="og-kl">Saldo do mês</span><b class="og-kv" id="k-saldo">—</b><span class="og-ks">Receitas menos despesas</span></div>
+    <div class="og-card"><span class="og-kl">Taxa de economia</span><b class="og-kv" id="k-taxa">—</b><span class="og-ks">Quanto da renda você guarda</span></div>
+  </section>
+
+  <section class="og-card" id="uso">
+    <h2>Como a renda foi usada</h2>
+    <p class="og-note">Cada pedaço é uma parte do dinheiro que entrou. A parte cinza é o que sobrou.</p>
+    <div class="og-stack" id="og-stack"></div>
+    <div class="og-legend" id="og-legend"></div>
+  </section>
+
+  <div class="og-grid">
+    <section class="og-card" id="grupos">
+      <h2>Para onde vai o dinheiro</h2>
+      <p class="og-note">Gastos agrupados por tipo, como na planilha.</p>
+      <div class="og-rows" id="og-grupos"></div>
+    </section>
+    <section class="og-card" id="top">
+      <h2>Maiores gastos</h2>
+      <p class="og-note">Os itens que mais pesam, do maior para o menor.</p>
+      <div class="og-rows" id="og-top"></div>
+    </section>
+  </div>
+
+  <section class="og-card" id="previsto">
+    <h2>Previsto e realizado</h2>
+    <p class="og-note">Barra fina: o que você planejou. Barra grossa: o que aconteceu.</p>
+    <div class="og-rows" id="og-previsto"></div>
+  </section>
+
+  <section class="og-card" id="itens">
+    <h2>Todos os lançamentos</h2>
+    <div class="og-tools">
+      <input type="search" id="og-q" placeholder="Buscar item ou categoria" aria-label="Buscar item ou categoria">
+      <span id="og-tipos" role="group" aria-label="Filtrar por tipo"></span>
+      <label><input type="checkbox" id="og-zero" checked> Esconder itens sem valor</label>
+    </div>
+    <div class="og-box">
+      <table class="og-table" id="og-tabela">
+        <thead><tr>
+          <th data-field="item">Item</th><th data-field="tipo">Tipo</th><th data-field="categoria">Categoria</th>
+          <th class="n" data-field="previsto">Previsto</th><th class="n" data-field="realizado">Realizado</th>
+          <th class="n" data-field="desvio">Diferença</th><th class="n" data-field="pct_renda">% da renda</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+  <div class="og-tip" id="og-tip"></div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
