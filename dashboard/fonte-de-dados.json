@@ -1,0 +1,13 @@
+{
+  "title": "Planilha Orçamento Mensal",
+  "description": "Receitas, despesas e investimentos da aba Orçamento Mensal. Reads Google Drive: Orçamento Familiar.",
+  "source": {
+    "kind": "query",
+    "connector": "Google Drive",
+    "tool": "download_file_content",
+    "args": {
+      "fileId": "1pZYB9Y8d1mV_6TZStmLbH632bIZd6WwEaNLd3rvkvlI",
+      "exportMimeType": "text/csv"
+    }
+  }
+}

@@ -1,0 +1,387 @@
+<style>
+.og{max-width:72rem;margin-inline:auto;display:grid;gap:var(--cds-gap-lg);font-family:var(--font-anthropic-sans);color:var(--color-fg);position:relative}
+.og *{box-sizing:border-box}
+.og-top{display:grid;gap:var(--cds-gap-xs)}
+.og-eyebrow{display:flex;flex-wrap:wrap;gap:var(--cds-gap-sm);align-items:center;color:var(--color-fg-muted);font-size:var(--cds-font-size-caption)}
+.og-pill{border:1px solid var(--color-border-line);border-radius:999px;padding:.1rem .6rem}
+.og h1{font-family:var(--font-anthropic-serif);font-weight:400;font-size:2rem;margin:0}
+.og-lead{margin:0;font-size:var(--cds-font-size-heading);max-width:48rem}
+.og-lead b{font-weight:500}
+.og-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:var(--cds-gap-md)}
+.og-card{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg);display:grid;gap:var(--cds-gap-sm);align-content:start;min-width:0}
+.og-kl{color:var(--color-fg-muted);font-size:var(--cds-font-size-caption)}
+.og .og-kv{font-family:var(--font-anthropic-serif);font-weight:400;font-size:1.9rem;font-variant-numeric:tabular-nums;line-height:1.1}
+.og-ks{color:var(--color-fg-muted);font-size:var(--cds-font-size-caption)}
+.og h2{margin:0;font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium)}
+.og-note{margin:0;color:var(--color-fg-muted);font-size:var(--cds-font-size-caption)}
+.og-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:var(--cds-gap-md)}
+.og-stack{display:flex;gap:2px;height:2.5rem;min-height:2.5rem}
+.og-seg{min-width:0;border-radius:4px}
+.og-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,11rem),1fr));gap:var(--cds-gap-sm)}
+.og-li{display:grid;grid-template-columns:auto 1fr;column-gap:.5rem;align-items:center;font-size:var(--cds-font-size-caption)}
+.og-sw{width:.75rem;height:.75rem;border-radius:3px}
+.og-li span:last-child{color:var(--color-fg-muted);grid-column:2;font-variant-numeric:tabular-nums}
+.og-rows{display:grid;gap:var(--cds-gap-sm);min-height:6rem}
+.og-r{display:grid;grid-template-columns:minmax(6rem,11rem) 1fr auto;gap:var(--cds-gap-sm);align-items:center;font-size:var(--cds-font-size-caption)}
+.og-r .l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.og-r .v{font-variant-numeric:tabular-nums;text-align:right}
+.og-track{height:.75rem;border-radius:4px;background:transparent;min-width:0}
+.og-bar{height:100%;border-radius:4px;min-width:2px}
+.og-pair{display:grid;gap:.2rem;padding-block:var(--cds-gap-xs)}
+.og-pairhead{display:flex;justify-content:space-between;gap:var(--cds-gap-sm);align-items:center;font-size:var(--cds-font-size-caption)}
+.og-chip{border:1px solid var(--color-border-line);border-radius:999px;padding:.05rem .55rem;font-size:var(--cds-font-size-caption)}
+.og-chip.ok{color:var(--color-ok)}.og-chip.warn{color:var(--color-warn)}.og-chip.bad{color:var(--color-bad)}
+.og-line{display:grid;grid-template-columns:5rem 1fr 7rem;gap:var(--cds-gap-sm);align-items:center;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.og-line .og-track{height:.5rem}
+.og-line .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--color-fg)}
+.og-tools{display:flex;flex-wrap:wrap;gap:var(--cds-gap-sm);align-items:center}
+.og-tools button,.og-tools label{font:inherit;font-size:var(--cds-font-size-caption)}
+.og-tools button{background:transparent;color:var(--color-fg);border:1px solid var(--color-border-line);border-radius:999px;padding:.2rem .7rem;cursor:pointer}
+.og-tools button[aria-pressed=true]{border-color:var(--color-fg);font-weight:500}
+.og-tools input[type=search]{font:inherit;font-size:var(--cds-font-size-caption);background:transparent;color:var(--color-fg);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:.25rem .6rem;min-width:0;flex:1 1 10rem}
+.og-box{max-height:26rem;overflow:auto;border:1px solid var(--color-border-line);border-radius:var(--cds-radius)}
+.og-table{width:100%;border-collapse:collapse;font-size:var(--cds-font-size-caption);font-variant-numeric:tabular-nums}
+.og-table th,.og-table td{padding:.45rem .7rem;text-align:left;white-space:nowrap}
+.og-table th{position:sticky;top:0;background:var(--color-panel);cursor:pointer;font-weight:500;color:var(--color-fg-muted);border-bottom:1px solid var(--color-border-line)}
+.og-table td{border-bottom:1px solid var(--color-border-line)}
+.og-table .n{text-align:right}
+.og-table .z{color:var(--color-fg-muted)}
+.og-tip{position:absolute;pointer-events:none;z-index:5;background:var(--cds-surface-popover);border:1px solid var(--cds-border);border-radius:var(--cds-radius);box-shadow:var(--cds-shadow-popover);padding:var(--cds-pad-xs) var(--cds-pad-sm);font-size:var(--cds-font-size-caption);display:none;max-width:16rem}
+.og-fail{display:flex;align-items:center;justify-content:center;gap:.4rem;min-height:6rem;color:var(--color-fg-muted);font-size:var(--cds-font-size-caption)}
+.og-fail i{width:.375rem;height:.375rem;border-radius:50%;background:var(--color-bad)}
+[data-dash-source-state=empty]{color:transparent}
+[data-dash-source-state=refreshing]{opacity:.5;transition:opacity var(--cds-dur-slow)}
+</style>
+
+<div class="og" id="og">
+  <header class="og-top" id="inicio">
+    <div class="og-eyebrow">
+      <span>Controle financeiro mensal</span>
+      <span class="og-pill" data-source="orcamento" data-field="categoria" data-where="bloco=info&amp;item=Mês">—</span>
+      <span class="og-pill" data-source="orcamento" data-field="categoria" data-where="bloco=info&amp;item=Status">—</span>
+    </div>
+    <h1>Orçamento Familiar</h1>
+    <p class="og-lead">Sobram <b data-source="orcamento" data-field="realizado" data-where="bloco=resumo&amp;item=SALDO LÍQUIDO">—</b> no mês, <b data-source="orcamento" data-field="realizado" data-where="bloco=resumo&amp;item=TAXA DE ECONOMIA">—</b> da renda. Investido até agora: <b data-source="blocos" data-field="realizado" data-where="bloco=investimento">—</b>.</p>
+  </header>
+
+  <section class="og-kpis" id="resumo" aria-label="Resumo do mês">
+    <div class="og-card"><span class="og-kl">Receitas</span><b class="og-kv" data-source="orcamento" data-field="realizado" data-where="bloco=resumo&amp;item=RECEITAS TOTAIS">—</b><span class="og-ks">Tudo que entrou</span></div>
+    <div class="og-card"><span class="og-kl">Despesas</span><b class="og-kv" data-source="orcamento" data-field="realizado" data-where="bloco=resumo&amp;item=DESPESAS TOTAIS">—</b><span class="og-ks">Contas fixas + gastos variáveis</span></div>
+    <div class="og-card"><span class="og-kl">Saldo do mês</span><b class="og-kv" data-source="orcamento" data-field="realizado" data-where="bloco=resumo&amp;item=SALDO LÍQUIDO">—</b><span class="og-ks">Receitas menos despesas</span></div>
+    <div class="og-card"><span class="og-kl">Taxa de economia</span><b class="og-kv" data-source="orcamento" data-field="realizado" data-where="bloco=resumo&amp;item=TAXA DE ECONOMIA">—</b><span class="og-ks">Quanto da renda você guarda</span></div>
+  </section>
+
+  <section class="og-card" id="uso">
+    <h2>Como a renda foi usada</h2>
+    <p class="og-note">Cada pedaço é uma parte do dinheiro que entrou. A parte cinza é o que sobrou.</p>
+    <div class="og-stack" id="og-stack" data-source="uso"></div>
+    <div class="og-legend" id="og-legend" data-source="uso"></div>
+  </section>
+
+  <div class="og-grid">
+    <section class="og-card" id="grupos">
+      <h2>Para onde vai o dinheiro</h2>
+      <p class="og-note">Gastos agrupados por tipo, como na planilha.</p>
+      <div class="og-rows" id="og-grupos" data-source="grupos"></div>
+    </section>
+    <section class="og-card" id="top">
+      <h2>Maiores gastos</h2>
+      <p class="og-note">Os itens que mais pesam, do maior para o menor.</p>
+      <div class="og-rows" id="og-top" data-source="top"></div>
+    </section>
+  </div>
+
+  <section class="og-card" id="previsto">
+    <h2>Previsto e realizado</h2>
+    <p class="og-note">Barra fina: o que você planejou. Barra grossa: o que aconteceu.</p>
+    <div class="og-rows" id="og-previsto" data-source="blocos"></div>
+  </section>
+
+  <section class="og-card" id="itens">
+    <h2>Todos os lançamentos</h2>
+    <div class="og-tools">
+      <input type="search" id="og-q" placeholder="Buscar item ou categoria" aria-label="Buscar item ou categoria">
+      <span id="og-tipos" role="group" aria-label="Filtrar por tipo"></span>
+      <label><input type="checkbox" id="og-zero" checked> Esconder itens sem valor</label>
+    </div>
+    <div class="og-box">
+      <table class="og-table" id="og-tabela" data-source="itens" data-row-key="item">
+        <thead><tr>
+          <th data-field="item">Item</th><th data-field="tipo">Tipo</th><th data-field="categoria">Categoria</th>
+          <th class="n" data-field="previsto">Previsto</th><th class="n" data-field="realizado">Realizado</th>
+          <th class="n" data-field="desvio">Diferença</th><th class="n" data-field="pct_renda">% da renda</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+  <div class="og-tip" id="og-tip"></div>
+</div>
+
+<script>
+const LOADER = ({ answer }) => {
+  const a = typeof answer === 'string' ? JSON.parse(answer) : answer;
+  if (!a || typeof a.content !== 'string') {
+    throw new Error('A planilha não devolveu o conteúdo. Chaves recebidas: ' + Object.keys(a || {}).join(', '));
+  }
+  const bytes = Uint8Array.from(atob(a.content), (c) => c.charCodeAt(0));
+  const csv = new TextDecoder('utf-8').decode(bytes);
+  const grid = [];
+  let row = [], cell = '', quoted = false;
+  for (let i = 0; i < csv.length; i++) {
+    const ch = csv[i];
+    if (quoted) {
+      if (ch === '"') { if (csv[i + 1] === '"') { cell += '"'; i++; } else quoted = false; }
+      else cell += ch;
+    } else if (ch === '"') quoted = true;
+    else if (ch === ',') { row.push(cell); cell = ''; }
+    else if (ch === '\n') { row.push(cell); grid.push(row); row = []; cell = ''; }
+    else if (ch !== '\r') cell += ch;
+  }
+  if (cell !== '' || row.length) { row.push(cell); grid.push(row); }
+  const cl = (r, i) => String((r && r[i]) || '').trim();
+  const money = (s) => {
+    const n = parseFloat(String(s || '').replace(/[^\d,\-]/g, '').replace(',', '.'));
+    return isNaN(n) ? 0 : n;
+  };
+  const out = [];
+  grid.forEach((r) => {
+    const g = cl(r, 6);
+    if (g.startsWith('Mês:')) out.push({ bloco: 'info', item: 'Mês', categoria: g.slice(4).trim(), previsto: null, realizado: null, diferenca: null });
+    if (g.startsWith('Status:')) out.push({ bloco: 'info', item: 'Status', categoria: g.slice(7).trim(), previsto: null, realizado: null, diferenca: null });
+  });
+  const kr = grid.findIndex((r) => cl(r, 1) === 'RECEITAS TOTAIS');
+  if (kr >= 0) {
+    [1, 3, 5, 7].forEach((c) => {
+      const v = cl(grid[kr + 1], c);
+      out.push({ bloco: 'resumo', item: cl(grid[kr], c), categoria: '', previsto: null, realizado: v.includes('%') ? money(v) / 100 : money(v), diferenca: null });
+    });
+  }
+  const blocos = { 'Fonte de Receita': 'receita', 'Despesa Fixa': 'fixa', 'Despesa Variável': 'variavel', 'Reserva / Investimento': 'investimento' };
+  let cur = null;
+  grid.forEach((r) => {
+    const b = cl(r, 1);
+    if (blocos[b] && cl(r, 2) === 'Categoria') { cur = blocos[b]; return; }
+    if (!b) { cur = null; return; }
+    if (cur && cl(r, 2)) {
+      out.push({ bloco: cur, item: b, categoria: cl(r, 2), previsto: money(r[3]), realizado: money(r[4]), diferenca: money(r[5]) });
+    }
+  });
+  const hi = grid.findIndex((r) => cl(r, 7) === 'Categoria Consolidada');
+  if (hi >= 0) {
+    for (let j = hi + 1; j < grid.length && cl(grid[j], 7); j++) {
+      out.push({ bloco: 'grupo', item: cl(grid[j], 7), categoria: '', previsto: null, realizado: money(grid[j][8]), diferenca: null });
+    }
+  }
+  return out;
+};
+dash.loader('orcamento', {
+  description: 'Lê o CSV da planilha e separa receitas, despesas, investimentos, totais e categorias.',
+  fn: LOADER,
+});
+
+const PAGO = ['receita', 'fixa', 'variavel', 'investimento'];
+dash.calc('itens', {
+  inputs: ['orcamento'],
+  title: 'Lançamentos do mês',
+  description: 'Cada item da planilha, com a diferença (realizado menos previsto) e a fatia da renda.',
+  fn: (orcamento) => {
+    const nome = { receita: 'Receita', fixa: 'Despesa fixa', variavel: 'Despesa variável', investimento: 'Investimento' };
+    const renda = orcamento.filter((r) => r.bloco === 'receita').reduce((s, r) => s + r.realizado, 0);
+    return orcamento.filter((r) => nome[r.bloco]).map((r) => ({
+      item: r.item, tipo: nome[r.bloco], categoria: r.categoria, previsto: r.previsto, realizado: r.realizado,
+      desvio: r.realizado - r.previsto, pct_renda: r.bloco === 'receita' || !renda ? null : r.realizado / renda,
+    }));
+  },
+});
+dash.calc('blocos', {
+  inputs: ['orcamento'],
+  title: 'Previsto e realizado por bloco',
+  description: 'Soma de cada bloco de despesa e de investimento, com o resultado em relação ao planejado.',
+  fn: (orcamento) => {
+    const nome = { fixa: 'Despesas fixas', variavel: 'Despesas variáveis', investimento: 'Investimentos' };
+    return ['fixa', 'variavel', 'investimento'].map((b) => {
+      const rs = orcamento.filter((r) => r.bloco === b);
+      const previsto = rs.reduce((s, r) => s + r.previsto, 0);
+      const realizado = rs.reduce((s, r) => s + r.realizado, 0);
+      const desvio = realizado - previsto;
+      const status = b === 'investimento' ? (desvio < 0 ? 'abaixo' : 'ok') : (desvio > 0 ? 'acima' : 'ok');
+      return { bloco: b, nome: nome[b], previsto, realizado, desvio, status };
+    });
+  },
+});
+dash.calc('uso', {
+  inputs: ['orcamento'],
+  title: 'Divisão da renda',
+  description: 'Fixas, variáveis, investimentos e o que sobra, em reais e como fatia da renda.',
+  fn: (orcamento) => {
+    const soma = (b) => orcamento.filter((r) => r.bloco === b).reduce((s, r) => s + r.realizado, 0);
+    const renda = soma('receita');
+    const partes = [['Despesas fixas', soma('fixa')], ['Despesas variáveis', soma('variavel')], ['Investimentos', soma('investimento')]];
+    partes.push(['Sobra', Math.max(renda - partes.reduce((s, p) => s + p[1], 0), 0)]);
+    return partes.map(([parte, valor]) => ({ parte, valor, pct: renda ? valor / renda : 0 }));
+  },
+});
+dash.calc('grupos', {
+  inputs: ['orcamento'],
+  title: 'Gastos por grupo',
+  description: 'Os grupos da tabela Categoria Consolidada da planilha, ordenados do maior para o menor.',
+  fn: (orcamento) => {
+    const renda = orcamento.filter((r) => r.bloco === 'receita').reduce((s, r) => s + r.realizado, 0);
+    return orcamento.filter((r) => r.bloco === 'grupo').map((r) => ({ grupo: r.item, valor: r.realizado, pct_renda: renda ? r.realizado / renda : 0 }))
+      .sort((a, b) => b.valor - a.valor);
+  },
+});
+dash.calc('top', {
+  inputs: ['orcamento'],
+  title: 'Maiores gastos',
+  description: 'Os 8 itens de despesa com maior valor realizado.',
+  fn: (orcamento) => {
+    const gastos = orcamento.filter((r) => r.bloco === 'fixa' || r.bloco === 'variavel');
+    const total = gastos.reduce((s, r) => s + r.realizado, 0);
+    return gastos.filter((r) => r.realizado > 0).sort((a, b) => b.realizado - a.realizado).slice(0, 8)
+      .map((r) => ({ item: r.item, categoria: r.categoria, realizado: r.realizado, pct_despesas: total ? r.realizado / total : 0 }));
+  },
+});
+
+(function () {
+  const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+  const PCT = new Intl.NumberFormat('pt-BR', { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const root = document.getElementById('og');
+  const tip = document.getElementById('og-tip');
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const ready = (id) => { const d = dash.data(id); return d.status === 'ok' ? d.data : null; };
+  const failed = (box) => {
+    const f = el('div', 'og-fail'); f.append(el('i'), el('span', null, 'Não foi possível carregar'));
+    box.replaceChildren(f);
+  };
+  const MUTED = 'var(--cds-chart-muted)';
+
+  // texto fixo nos campos marcados, a partir da planilha
+  function fillMarks() {
+    const rows = ready('orcamento');
+    root.querySelectorAll('[data-source="orcamento"][data-where]').forEach((n) => {
+      if (!rows) return;
+      const w = Object.fromEntries(n.dataset.where.split('&').map((p) => p.split('=')));
+      const r = rows.find((x) => Object.keys(w).every((k) => String(x[k]) === w[k]));
+      if (!r) return;
+      const v = r[n.dataset.field];
+      n.textContent = typeof v === 'number' ? (r.item === 'TAXA DE ECONOMIA' ? PCT.format(v) : BRL.format(v)) : v;
+    });
+    const inv = ready('blocos');
+    const n = root.querySelector('[data-source="blocos"][data-where]');
+    if (inv && n) { const r = inv.find((x) => x.bloco === 'investimento'); if (r) n.textContent = BRL.format(r.realizado); }
+  }
+
+  function drawUso() {
+    const stack = document.getElementById('og-stack'), legend = document.getElementById('og-legend');
+    const rows = ready('uso');
+    if (!rows) { failed(stack); legend.replaceChildren(); return; }
+    const cor = (i) => (i === 3 ? MUTED : dash.colors[i]);
+    stack.replaceChildren(...rows.filter((r) => r.valor > 0).map((r) => {
+      const i = rows.indexOf(r);
+      const s = el('div', 'og-seg'); s.style.flex = r.valor + ' 1 0'; s.style.background = cor(i);
+      s.dataset.tip = r.parte + ': ' + BRL.format(r.valor) + ' (' + PCT.format(r.pct) + ' da renda)';
+      return s;
+    }));
+    legend.replaceChildren(...rows.map((r, i) => {
+      const li = el('div', 'og-li'); const sw = el('span', 'og-sw'); sw.style.background = cor(i);
+      li.append(sw, el('span', null, r.parte), el('span', null, BRL.format(r.valor) + ' · ' + PCT.format(r.pct)));
+      return li;
+    }));
+  }
+
+  function drawBars(boxId, id, label, value, pct, cor) {
+    const box = document.getElementById(boxId); const rows = ready(id);
+    if (!rows) { failed(box); return; }
+    const max = Math.max(...rows.map((r) => r[value]), 1);
+    box.replaceChildren(...rows.map((r) => {
+      const line = el('div', 'og-r'); line.append(el('span', 'l', r[label]));
+      const track = el('div', 'og-track'); const bar = el('div', 'og-bar');
+      bar.style.width = (r[value] / max * 100) + '%'; bar.style.background = r[value] > 0 ? cor : MUTED;
+      track.append(bar); line.append(track, el('span', 'v', BRL.format(r[value])));
+      line.dataset.tip = r[label] + ': ' + BRL.format(r[value]) + ' (' + PCT.format(r[pct]) + ')';
+      return line;
+    }));
+  }
+
+  function drawPrevisto() {
+    const box = document.getElementById('og-previsto'); const rows = ready('blocos');
+    if (!rows) { failed(box); return; }
+    const max = Math.max(...rows.map((r) => Math.max(r.previsto, r.realizado)), 1);
+    const texto = { ok: ['ok', '✓ Dentro do previsto'], acima: ['bad', '▲ Acima do previsto'], abaixo: ['warn', '▼ Abaixo da meta'] };
+    box.replaceChildren(...rows.map((r, i) => {
+      const w = el('div', 'og-pair'); const head = el('div', 'og-pairhead');
+      const st = texto[r.status]; const chip = el('span', 'og-chip ' + st[0], st[1]);
+      head.append(el('span', null, r.nome), chip); w.append(head);
+      [['Previsto', r.previsto, '.35rem'], ['Realizado', r.realizado, '.75rem']].forEach(([n, v, h]) => {
+        const l = el('div', 'og-line'); l.append(el('span', null, n));
+        const t = el('div', 'og-track'); t.style.height = h; const b = el('div', 'og-bar');
+        b.style.width = (v / max * 100) + '%'; b.style.background = n === 'Previsto' ? MUTED : dash.colors[i];
+        t.append(b); l.append(t, el('span', 'v', BRL.format(v))); w.append(l);
+      });
+      w.dataset.tip = r.nome + ' · previsto ' + BRL.format(r.previsto) + ', realizado ' + BRL.format(r.realizado);
+      return w;
+    }));
+  }
+
+  // tabela
+  const state = { q: '', tipo: 'Todos', zero: true, key: null, dir: 1 };
+  const TIPOS = ['Todos', 'Receita', 'Despesa fixa', 'Despesa variável', 'Investimento'];
+  const tipos = document.getElementById('og-tipos');
+  TIPOS.forEach((t) => {
+    const b = el('button', null, t === 'Todos' ? 'Todos' : t + 's'); b.type = 'button'; b.dataset.tipo = t;
+    b.addEventListener('click', () => { state.tipo = t; drawTabela(); });
+    tipos.append(b, document.createTextNode(' '));
+  });
+  document.getElementById('og-q').addEventListener('input', (e) => { state.q = e.target.value.toLowerCase(); drawTabela(); });
+  document.getElementById('og-zero').addEventListener('change', (e) => { state.zero = e.target.checked; drawTabela(); });
+  document.querySelectorAll('#og-tabela th').forEach((th) => th.addEventListener('click', () => {
+    const k = th.dataset.field; state.dir = state.key === k ? -state.dir : 1; state.key = k; drawTabela();
+  }));
+
+  function drawTabela() {
+    const tb = document.querySelector('#og-tabela tbody'); const rows = ready('itens');
+    tipos.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.tipo === state.tipo)));
+    document.querySelectorAll('#og-tabela th').forEach((th) => th.setAttribute('aria-sort', th.dataset.field === state.key ? (state.dir > 0 ? 'ascending' : 'descending') : 'none'));
+    if (!rows) { tb.replaceChildren(); return; }
+    let list = rows.filter((r) => (state.tipo === 'Todos' || r.tipo === state.tipo)
+      && (!state.zero || r.previsto !== 0 || r.realizado !== 0)
+      && (!state.q || (r.item + ' ' + r.categoria).toLowerCase().includes(state.q)));
+    if (state.key) list = list.slice().sort((a, b) => (typeof a[state.key] === 'number' || a[state.key] == null
+      ? ((a[state.key] ?? -Infinity) - (b[state.key] ?? -Infinity)) : String(a[state.key]).localeCompare(String(b[state.key]), 'pt-BR')) * state.dir);
+    const maxPct = Math.max(...rows.map((r) => r.pct_renda || 0), 0.0001);
+    tb.replaceChildren(...list.map((r) => {
+      const tr = el('tr'); tr.dataset.key = r.item;
+      tr.append(el('td', null, r.item), el('td', null, r.tipo), el('td', null, r.categoria));
+      tr.append(el('td', 'n', BRL.format(r.previsto)), el('td', 'n', BRL.format(r.realizado)));
+      const bom = r.tipo === 'Despesa fixa' || r.tipo === 'Despesa variável' ? r.desvio <= 0 : r.desvio >= 0;
+      const d = el('td', 'n' + (r.desvio === 0 ? ' z' : ''), (r.desvio > 0 ? '+' : '') + BRL.format(r.desvio));
+      if (r.desvio !== 0) d.style.color = bom ? 'var(--color-ok)' : 'var(--color-bad)';
+      tr.append(d);
+      const p = el('td', 'n' + (!r.pct_renda ? ' z' : ''), r.pct_renda == null ? '—' : PCT.format(r.pct_renda));
+      if (r.pct_renda) p.style.background = 'linear-gradient(to left, color-mix(in srgb,' + dash.colors[0] + ' 30%, transparent) ' + (r.pct_renda / maxPct * 100) + '%, transparent 0)';
+      tr.append(p);
+      return tr;
+    }));
+  }
+
+  // dica ao passar o mouse
+  root.addEventListener('mousemove', (e) => {
+    const t = e.target.closest('[data-tip]');
+    if (!t) { tip.style.display = 'none'; return; }
+    tip.textContent = t.dataset.tip; tip.style.display = 'block';
+    const b = root.getBoundingClientRect();
+    tip.style.left = Math.min(e.clientX - b.left + 12, b.width - tip.offsetWidth - 4) + 'px';
+    tip.style.top = (e.clientY - b.top + 14) + 'px';
+  });
+  root.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+
+  dash.onData(() => {
+    fillMarks(); drawUso();
+    drawBars('og-grupos', 'grupos', 'grupo', 'valor', 'pct_renda', dash.colors[0]);
+    drawBars('og-top', 'top', 'item', 'realizado', 'pct_despesas', dash.colors[1]);
+    drawPrevisto(); drawTabela();
+  });
+})();
+</script>
